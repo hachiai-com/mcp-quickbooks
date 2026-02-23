@@ -12,10 +12,15 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const client_id = process.env.QUICKBOOKS_CLIENT_ID;
 const client_secret = process.env.QUICKBOOKS_CLIENT_SECRET;
-const refresh_token = process.env.QUICKBOOKS_REFRESH_TOKEN;
-const realm_id = process.env.QUICKBOOKS_REALM_ID;
+const raw_refresh = process.env.QUICKBOOKS_REFRESH_TOKEN;
+const raw_realm = process.env.QUICKBOOKS_REALM_ID;
 const environment = process.env.QUICKBOOKS_ENVIRONMENT || 'sandbox';
-const redirect_uri = 'http://localhost:8000/callback';
+const redirect_uri = process.env.QUICKBOOKS_REDIRECTURI || 'http://localhost:8000/callback';
+
+const PLACEHOLDER_REFRESH = /your_refresh_token|your_refresh_token_here/i;
+const PLACEHOLDER_REALM = /your_company_id|your_realm_id|your_company_id_here|your_realm_id_here/i;
+const refresh_token = raw_refresh && !PLACEHOLDER_REFRESH.test(raw_refresh.trim()) ? raw_refresh : undefined;
+const realm_id = raw_realm && !PLACEHOLDER_REALM.test(raw_realm.trim()) ? raw_realm : undefined;
 
 // Only throw error if client_id or client_secret is missing
 if (!client_id || !client_secret || !redirect_uri) {
