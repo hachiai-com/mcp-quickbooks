@@ -1,11 +1,11 @@
 {
-  "name": "@hachiai-com/mcp-quickbooks",
+  "name": "@hachiai/mcp-quickbooks",
   "version": "0.0.1",
   "description": "QuickBooks Online MCP server — lets AI assistants access QuickBooks data via the Model Context Protocol",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hachiai-com/mcp-quickbooks.git"
+    "url": "git+https://github.com/hachiai-com/mcp-quickbooks.git"
   },
   "homepage": "https://github.com/hachiai-com/mcp-quickbooks#readme",
   "keywords": [
@@ -20,8 +20,12 @@
   },
   "main": "dist/index.js",
   "type": "module",
-  "bin": "./dist/index.js",
-  "files": ["dist"],
+  "bin": {
+    "mcp-quickbooks": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc && shx chmod +x dist/*.js",
     "prepare": "npm run build",
@@ -33,6 +37,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.6.0",
     "dotenv": "^16.4.7",
+    "googleapis": "^171.4.0",
     "intuit-oauth": "^4.0.0",
     "node-quickbooks": "^2.0.43",
     "open": "^9.1.0",
@@ -40,7 +45,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
-    "@types/node": "^22.13.10",
+    "@types/node": "^22.19.11",
     "eslint": "^9.22.0",
     "eslint-config-prettier": "^10.1.1",
     "globals": "^16.0.0",
