@@ -1,10 +1,20 @@
 # QuickBooks Online MCP Server
 
-This is a Model Context Protocol (MCP) server implementation for QuickBooks Online integration.
+This is a Model Context Protocol (MCP) server implementation for QuickBooks Online integration. It lets AI assistants access QuickBooks data via MCP.
+
+**npm package:** [`@hachiai-com/mcp-quickbooks`](https://www.npmjs.com/package/@hachiai-com/mcp-quickbooks)
+
+## Install
+
+```bash
+npm install @hachiai-com/mcp-quickbooks
+```
+
+Or clone this repo and run `npm install` in the project directory.
 
 ## Setup
 
-1. Install dependencies:
+1. Install dependencies (if not using the npm package):
 ```bash
 npm install
 ```
@@ -46,7 +56,11 @@ QUICKBOOKS_REALM_ID=your_realm_id
 
 ### Option 2: Using the OAuth Flow
 
-If you don't have a refresh token, you can use the built-in OAuth flow:
+If you don't have a refresh token, run:
+
+```bash
+npm run auth
+```
 
 This will:
 - Start a temporary local server
